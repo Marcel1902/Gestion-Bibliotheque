@@ -1,0 +1,57 @@
+    
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-image: linear-gradient(to right, #000, rgba(0, 0, 0, .3)), url('bibliotheque.jpg');
+            background-size: cover;
+          }
+          
+          .content{
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              text-align: center;
+              margin-top: 12%;
+          }
+          .content h1, h2{
+              color: aliceblue;
+          }
+          .content span{
+              height: 100%;
+              width: 15%;
+              margin: 2vh;
+              border: 3px solid aqua;
+              color: aliceblue;
+          }
+          
+          .content button:hover{
+              cursor: pointer;
+              color: white;
+          }
+          .content button:active{
+              transform: Scale(1.02);
+              transition: .2s;
+              
+          }
+          .content button a{
+              text-decoration: none;
+              font-size: 20px;
+              
+          }
+          @media screen and (max-width: 625px){
+              .content button{
+                  width: 20%;
+              }
+              .content{
+                  margin-top: 22%;
+              }
+          }
+
+          @media screen and (max-width: 471px){
+            .content button{
+                width: 50%;
+            }
+          }
+
+          

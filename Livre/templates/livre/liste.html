@@ -1,0 +1,51 @@
+{% extends "base.html" %} {% block title %}liste{% endblock title %}
+
+
+{% block content %}
+
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    
+    body{
+        background-color: #f9f6f2;
+    }
+    
+    .card-img-top{
+        padding: 20px;
+    }
+    
+    .card{
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 0.625em 0.625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px;   
+    }
+    
+    h5{
+        color: rgb(0, 91, 228);
+    }
+</style>
+    <div class="container py-5">
+        <h1 class="text-center text-light">Nos livres disponible</h1> 
+        <hr style="color: white; font-weight: bolder;">
+        <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
+            <!--mampiasa boucle for hampisehoana ny liste boky rehetra ao anaty base des données-->
+            {% for livre in livres  %}
+                <div class="col">
+                    <div class="card">
+                        <img src="{{ livre.Couverture.url }}" alt="{{ livre.Titre }}" class="card-img-top">
+                        <div class="card-body">
+                            <h5>{{ livre.Titre }}</h5>
+                            <p class="card-text"><b>Auteur:</b> {{ livre.Auteur }} <br> <b>Date de sortie:</b> {{ livre.Date_de_production }} </p>
+                        </div>
+                        <div class="d-flex justify-content-around mb-3">
+                            <button class="btn btn-primary download" data-url={% url 'telechargement_livre' livre.slug %}><i class="fas fa-download"></i></button>
+                             <a href="{% url 'livre_detail' livre.slug %}" class="btn btn-success" style="border-radius: 50px; width: 120px;"> detail </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}
