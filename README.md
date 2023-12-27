@@ -8,7 +8,7 @@ Pour démarrer le projet, suivez ces étapes :
 3. Activez l'environnement virtuel :
    - Sur Linux/macOS : `source venv/bin/activate`
    - Sur Windows : `venv\Scripts\activate`
-4. Installez les dépendances : `pip install django` et 'pip install pillow'
+4. Installez les dépendances : `pip install django` , 'pip install pillow', 'pip install mysql-connector' , 'pip install mysql-client'
 5. Appliquez les migrations : `python manage.py migrate`
 6. Lancez le serveur : `python manage.py runserver`
 
