@@ -13,8 +13,8 @@ class Livre(models.Model):
     NB_PAGES = models.IntegerField(default=1)
     Categorie = models.CharField(max_length=128)
     Note_resume = models.TextField(blank=True)
-    Couverture = models.ImageField(upload_to="boky")
-    Fichier = models.FileField(upload_to="boky")
+    Couverture = models.ImageField(upload_to="media")
+    Fichier = models.FileField(upload_to="media")
     
     
     def __str__(self):

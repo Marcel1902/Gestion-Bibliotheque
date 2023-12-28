@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import FileResponse
+from django.http import FileResponse, HttpResponse
 from Livre.models import Livre
 from Bibliotheque import settings
 import os
+import mimetypes
 
 # eto no icreena ny vue, zany oe hahafahana mampiseho ny page HTML any @ navigateur, sady mi'definir ny fonction sy ny logique rehetra mahakasika an'ilay page
 
@@ -26,14 +27,27 @@ def telechargement_livre(request, slug):
      
      # Si le fichier existe, retournez le en réponse
     if os.path.exists(chemin_fichier):
-        with open(chemin_fichier, 'rb') as fichier:
-            response = FileResponse(fichier, content_type='application/pdf')
-            response['Content-Disposition'] = 'attachment; filename="livre.Titre.pdf"'
-            return response
-    
+        try:
+            with open(chemin_fichier, 'rb') as fichier:
+                content_type, encoding = mimetypes.guess_type(chemin_fichier)
+                contenu_fichier = fichier.read()
+                response = HttpResponse(contenu_fichier, content_type=content_type)
+                response['Content-Disposition'] = f'attachment; filename="{livre.Titre}.pdf"'
+                print(f'Chemin du fichier : {chemin_fichier}')
+                print(f'Taille du fichier avant la réponse : {os.path.getsize(chemin_fichier)} bytes')
+                return response
+        except FileNotFoundError:
+            message = 'Le fichier demandé n\'a pas été trouvé.'
+        
+        except PermissionError:
+            message = 'Permission refusée pour accéder au fichier.'
+        except Exception as e:
+            print(f"Erreur lors de l'ouverture du fichier : {e}")
+            message = 'Une erreur est survenue lors du téléchargement du livre.'
+        
     else:
         # Gérez le cas où le fichier n'existe pas
-        return render(request, 'erreur.html', {'message': 'Le livre demandé n\'existe pas.'})
+        return render(request, 'livre/erreur.html', {'message': 'Le livre demandé n\'existe pas.'})
     
 # fonction recherche livre
 def recherche_livre(request):
