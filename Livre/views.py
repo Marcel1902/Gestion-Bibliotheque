@@ -32,7 +32,7 @@ def telechargement_livre(request, slug):
                 content_type, encoding = mimetypes.guess_type(chemin_fichier)
                 contenu_fichier = fichier.read()
                 response = HttpResponse(contenu_fichier, content_type=content_type)
-                response['Content-Disposition'] = f'attachment; filename="{livre.Titre}.pdf"'
+                response['Content-Disposition'] = f'attachment; filename="{livre.Titre}"'
                 print(f'Chemin du fichier : {chemin_fichier}')
                 print(f'Taille du fichier avant la réponse : {os.path.getsize(chemin_fichier)} bytes')
                 return response

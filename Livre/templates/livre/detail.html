@@ -24,7 +24,6 @@
             <p> <b>Auteur: </b> {{ livre.Auteur }} <br> <b>Date de sortie:</b> {{ livre.Date_de_production }} <br> <b>Format: </b> {{ livre.Format }} <br> <b>NB_PAGES: </b> {{ livre.NB_PAGES }} <br> <b>Categorie: </b> {{ livre.Categorie}} <br> <b>Resumé: </b> <br> {{ livre.Note_resume }} </p>
         </div>
         <div class=" mb-3 d-flex justify-content-around">
-            <button class="btn btn-primary download" data-url={% url 'telechargement_livre' livre.slug %}><i class="fas fa-download"></i>Telecharger</button>
             <a href="/liste" type="button" class="btn btn-primary "> Retour </a>
         </div>
     </div>
