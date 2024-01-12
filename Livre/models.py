@@ -5,7 +5,7 @@ from django.db import models
 class Livre(models.Model):
     Titre = models.CharField(max_length=128)
     Auteur = models.CharField(max_length=128)
-    slug = models.SlugField(max_length=128)
+    id = models.AutoField(primary_key=True)
     Date_de_production = models.DateField(blank=True)
     Adresse = models.CharField(max_length=128)
     Mot_cle = models.CharField(max_length=128)

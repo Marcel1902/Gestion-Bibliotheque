@@ -16,13 +16,13 @@ def liste(request):
     return render(request, 'livre/liste.html', context={"livres": livres})
 
 #fonction detail livre
-def livre_detail(request, slug):
-    livre = get_object_or_404(Livre, slug=slug)
+def livre_detail(request, id):
+    livre = get_object_or_404(Livre, id=id)
     return render(request, 'livre/detail.html', context={"livre":livre})
 
 #fonction telechargement livre
-def telechargement_livre(request, slug):
-    livre = get_object_or_404(Livre, slug=slug)
+def telechargement_livre(request, id):
+    livre = get_object_or_404(Livre, id=id)
     chemin_fichier = livre.Fichier.path
      
      # Si le fichier existe, retournez le en réponse
