@@ -2,7 +2,7 @@ from django.db import models
 
 # Eto no mamorona ny modele base des données
 
-class Livre(models.Model):
+class Document(models.Model):
     Titre = models.CharField(max_length=128)
     Auteur = models.CharField(max_length=128)
     id = models.AutoField(primary_key=True)

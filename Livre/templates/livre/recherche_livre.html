@@ -1,5 +1,5 @@
-{% extends "base.html" %} {% block title %}resultat de la recherche{% endblock title %}
-
+{% extends "base.html" %} 
+{% block title %}Résultats de la recherche{% endblock title %}
 
 {% block content %}
 <style>
@@ -25,34 +25,32 @@
         color: rgb(0, 91, 228);
     }
 </style>
+
 {% if aucun_resultat %}
-    <h1 class="text-center text-light">Aucun livre correspond à "{{ query }}"</h1>
+    <h1 class="text-center text-light">Aucun document correspond à "{{ query }}"</h1>
 {% else %}
-    {% for livre in livres %}
-        <div class="container py-5">
-            <h1 class="text-center text-light">resultat pour "{{ query }}" </h1> 
-            <hr style="color: white; font-weight: bolder;">
-            <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
-                <!--mampiasa boucle for hampisehoana ny liste boky rehetra ao anaty base des données-->
-                {% for livre in livres  %}
-                    <div class="col">
-                        <div class="card">
-                            <img src="{{ livre.Couverture.url }}" alt="{{ livre.Titre }}" class="card-img-top">
-                            <div class="card-body">
-                                <h5>{{ livre.Titre }}</h5>
-                                <p class="card-text"><b>Auteur:</b> {{ livre.Auteur }} <br> <b>Date de sortie:</b> {{ livre.Date_de_production }} </p>
-                            </div>
-                            <div class="d-flex justify-content-around mb-3">
-                                <button class="btn btn-primary download" data-url={% url 'telechargement_livre' livre.id %}><i class="fas fa-download"></i></button>
-                                <a href="{% url 'livre_detail' livre.id %}" class="btn btn-primary"> detail </a>
-                            </div>
+    <div class="container py-5">
+        <h1 class="text-center text-light">Résultats pour "{{ query }}"</h1> 
+        <hr style="color: white; font-weight: bolder;">
+        <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
+            <!-- Utilisation de la boucle for pour afficher les documents -->
+            {% for document in documents %}
+                <div class="col">
+                    <div class="card">
+                        <img src="{{ document.Couverture.url }}" alt="{{ document.Titre }}" class="card-img-top">
+                        <div class="card-body">
+                            <h5>{{ document.Titre }}</h5>
+                            <p class="card-text"><b>Auteur:</b> {{ document.Auteur }} <br> <b>Date de sortie:</b> {{ document.Date_de_production }} </p>
+                        </div>
+                        <div class="d-flex justify-content-around mb-3">
+                            <button class="btn btn-primary download" data-url={% url 'telechargement_document' document.id %}><i class="fas fa-download"></i></button>
+                            <a href="{% url 'document_detail' document.id %}" class="btn btn-primary"> détail </a>
                         </div>
                     </div>
-                {% endfor %}
-            </div>
+                </div>
+            {% endfor %}
         </div>
-    {% endfor %}
+    </div>
 {% endif %}
-
 
 {% endblock content %}

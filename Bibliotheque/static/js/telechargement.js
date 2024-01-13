@@ -11,17 +11,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function telechargerLivre(url, nomFichier) {
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', url, nomFichier, true);
+        xhr.open('GET', url, true);
         xhr.responseType = 'blob';
 
         xhr.onload = function () {
             var blob = xhr.response;
             var link = document.createElement('a');
             link.href = window.URL.createObjectURL(blob);
-            link.download = nomFichier;  // Utiliser la variable nomFichier ici
+            link.download = nomFichier;  
             link.click();
         };
 
+        xhr.onerror = function () {
+            console.error('XHR encountered an error.');
+        };
+
+        console.log('Before XHR send.');
         xhr.send();
+        console.log('After XHR send.');
     }
 });

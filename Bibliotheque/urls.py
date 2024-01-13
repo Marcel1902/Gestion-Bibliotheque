@@ -4,15 +4,17 @@
 
 from django.contrib import admin
 from django.urls import path
-from Livre.views import index, liste, livre_detail, telechargement_livre, recherche_livre
+from Livre.views import index, liste, document_detail, telechargement_document, recherche_document
 from django.conf.urls.static import static
 from Bibliotheque import settings
+
 
 urlpatterns = [
     path('', index, name='index'),
     path('liste/', liste, name='liste'),
-    path('livre/<int:id>', livre_detail, name='livre_detail'),
-    path('telechargement-livre/<int:id>', telechargement_livre, name='telechargement_livre'),
-    path('recherche/', recherche_livre, name='recherche_livre'),
+    path('document/<int:id>', document_detail, name='document_detail'),
+    path('telechargement-document/<int:id>', telechargement_document, name='telechargement_document'),  # Changement ici
+    path('recherche/', recherche_document, name='recherche_document'),  # Changement ici
     path('admin/', admin.site.urls),
-    ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

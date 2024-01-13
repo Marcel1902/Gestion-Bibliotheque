@@ -1,32 +1,40 @@
-{% extends "base.html" %} <!--mba tsy hahalava be ny code hamerimberina navbar d ilay fichier base.html fotsiny no importena isaky ny fichier html zay tiana hasiana an'ilay navabar-->
+{% extends "base.html" %}
+
 {% block title %}detail{% endblock title %}
 
 {% block content %}
 
 <style>
-    .card{
+    .card {
         width: 50%;
         display: flex;
         flex-direction: column;
         margin-left: 25%;
     }
 
-    .card-body h3{
+    .card-body h3 {
         color: rgb(0, 91, 228);
     }
 </style>
-    <div class="card">
-        <div class="couverture card-img-top" >
-            <img src="{{ livre.Couverture.url }}" alt="livre" style="width:100%">
-        </div>
-        <div class="card-body">
-            <h3> {{ livre.Titre }} </h3>
-            <p> <b>Auteur: </b> {{ livre.Auteur }} <br> <b>Date de sortie:</b> {{ livre.Date_de_production }} <br> <b>Format: </b> {{ livre.Format }} <br> <b>NB_PAGES: </b> {{ livre.NB_PAGES }} <br> <b>Categorie: </b> {{ livre.Categorie}} <br> <b>Resumé: </b> <br> {{ livre.Note_resume }} </p>
-        </div>
-        <div class=" mb-3 d-flex justify-content-around">
-            <a href="/liste" type="button" class="btn btn-primary "> Retour </a>
-        </div>
-    </div>
 
+<div class="card">
+    <div class="couverture card-img-top">
+        <img src="{{ document.Couverture.url }}" alt="document" style="width:100%">
+    </div>
+    <div class="card-body">
+        <h3> {{ document.Titre }} </h3>
+        <p>
+            <b>Auteur: </b> {{ document.Auteur }} <br>
+            <b>Date de sortie:</b> {{ document.Date_de_production }} <br>
+            <b>Format: </b> {{ document.Format }} <br>
+            <b>NB_PAGES: </b> {{ document.NB_PAGES }} <br>
+            <b>Categorie: </b> {{ document.Categorie }} <br>
+            <b>Resumé: </b> <br> {{ document.Note_resume }}
+        </p>
+    </div>
+    <div class=" mb-3 d-flex justify-content-around">
+        <a href="/liste" type="button" class="btn btn-primary "> Retour </a>
+    </div>
+</div>
 
 {% endblock content %}

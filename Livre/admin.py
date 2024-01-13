@@ -1,10 +1,10 @@
 from django.contrib import admin
-from Livre.models import Livre
+from Livre.models import Document
 from django.utils.translation import gettext_lazy as _
 
 # importena eto lay base des données mba hahafahana mi'gerer azy any @ espace admin
 
-admin.site.register(Livre)
+admin.site.register(Document)
 
 
 #parametre django admin

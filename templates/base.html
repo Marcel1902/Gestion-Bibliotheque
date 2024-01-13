@@ -42,10 +42,10 @@
         <div class="collapse navbar-collapse" id="navbar">
             <div class="navbar-nav">
                 <a href="/" class="nav-item nav-link" style="margin-left: 10px;"><i class="fas fa-home" style="padding-right: 6px; font-size: 25px;"></i>Home</a>
-                <a href="/liste" class="nav-item nav-link" style="margin-left: 10px;"><i class="fas fa-book" style="padding-right: 6px; font-size: 25px"></i>Livres</a>
+                <a href="/liste" class="nav-item nav-link" style="margin-left: 10px;"><i class="fas fa-book" style="padding-right: 6px; font-size: 25px"></i>Documents</a>
             </div>
             <div class="search-container">
-                <form action="{% url 'recherche_livre' %}" method="get">
+                <form action="{% url 'recherche_document' %}" method="get">
                   <input type="text" placeholder="Search.." name="search" class="form-group">
                   <button type="submit"><i class="fa fa-search" style="padding: 5px;"></i></button>
                 </form>
