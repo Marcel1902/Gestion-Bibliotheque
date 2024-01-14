@@ -33,6 +33,7 @@
         </p>
     </div>
     <div class=" mb-3 d-flex justify-content-around">
+        <button class="btn btn-primary download" data-url={% url 'telechargement_document' document.id %} data-nom="{{document.Titre}}"><i class="fas fa-download"></i></button>
         <a href="/liste" type="button" class="btn btn-primary "> Retour </a>
     </div>
 </div>
