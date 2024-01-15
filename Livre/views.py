@@ -26,7 +26,7 @@ def telechargement_document(request, id):  # Mise à jour ici
                 content_type, encoding = mimetypes.guess_type(chemin_fichier)
                 contenu_fichier = fichier.read()
                 response = HttpResponse(contenu_fichier, content_type=content_type)
-                response['Content-Disposition'] = f'attachment; filename="{document.Titre}"'  # Mise à jour ici
+                response['Content-Disposition'] = f'attachment; filename="{document.Fichier.name}"'  # Mise à jour ici
                 print(f'Chemin du fichier : {chemin_fichier}')
                 print(f'Taille du fichier avant la réponse : {os.path.getsize(chemin_fichier)} bytes')
                 return response

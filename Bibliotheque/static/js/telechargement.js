@@ -18,12 +18,13 @@ document.addEventListener("DOMContentLoaded", function () {
             var blob = xhr.response;
             var link = document.createElement('a');
             link.href = window.URL.createObjectURL(blob);
-            link.download = nomFichier;  
+            link.download = nomFichier;
             link.click();
         };
 
         xhr.onerror = function () {
             console.error('XHR encountered an error.');
+            alert('Erreur lors du téléchargement du fichier. Veuillez désactiver votre bloqueur de publicité et réessayer.');
         };
 
         console.log('Before XHR send.');
